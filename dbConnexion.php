@@ -10,10 +10,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
     exit();
 }
 
-$servername = "localhost";
-$username = "root";  // Default MySQL username (change if needed)
-$password = "1963";  // Default password (change if needed)
-$dbname = "afmassnadmin"; // Replace with your database name
+$servername = "sql302.infinityfree.com";
+$username = "if0_38165535";  // Default MySQL username (change if needed)
+$password = "hfklBKwAod8t";  // Default password (change if needed)
+$dbname = "if0_38165535_afmassnadmin"; // Replace with your database name
 
 try {
     // Create PDO connection
