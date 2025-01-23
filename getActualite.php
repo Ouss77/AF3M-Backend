@@ -1,6 +1,4 @@
 <?php 
-
-// Include the dbConnexion.php file to set CORS headers and establish the database connection
 include 'dbConnexion.php';
 
 // Set the content type to JSON for the response
@@ -17,4 +15,3 @@ try {
     echo json_encode(['error' => 'Database connection failed: ' . $e->getMessage()]);
 }
 ?>
- 
