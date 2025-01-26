@@ -1,4 +1,11 @@
 <?php
+// Include Composer's autoloader
+require_once __DIR__ . '/vendor/autoload.php';  // Adjust the path if needed
+
+// Load environment variables from .env file
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+$dotenv->load();
+
 // dbConnexion.php
 header("Access-Control-Allow-Origin: *");  // Allow all origins (you can restrict this to specific origins if needed)
 header("Access-Control-Allow-Methods: GET, POST, DELETE, OPTIONS");  // Allow necessary HTTP methods
@@ -10,10 +17,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
     exit();
 }
 
-$servername = "sql302.infinityfree.com";
-$username = "if0_38165535";  // Default MySQL username (change if needed)
-$password = "hfklBKwAod8t";  // Default password (change if needed)
-$dbname = "if0_38165535_afmassnadmin"; // Replace with your database name
+// Retrieve database credentials from environment variables
+$servername = $_ENV['DB_SERVER'];
+$username = $_ENV['DB_USERNAME'];
+$password = $_ENV['DB_PASSWORD'];
+$dbname = $_ENV['DB_NAME'];
 
 try {
     // Create PDO connection
@@ -25,4 +33,4 @@ try {
     echo json_encode(['error' => 'Database connection failed: ' . $e->getMessage()]);
     exit(); // Stop execution if connection fails
 }
-?> 
+?>
