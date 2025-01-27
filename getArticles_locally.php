@@ -21,7 +21,7 @@ try {
         LEFT JOIN 
             article_authors aa ON a.article_id = aa.article_id
         LEFT JOIN 
-            Authors au ON aa.author_id = au.author_id
+            authors au ON aa.author_id = au.author_id
         GROUP BY 
             a.article_id, a.titre, a.annee, a.theme, a.resume;
     ";
