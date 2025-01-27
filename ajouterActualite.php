@@ -30,7 +30,7 @@ try {
         }
 
         // Insert data into the database
-        $stmt = $pdo->prepare("INSERT INTO Actualites (Titre, Description, image_url) VALUES (?, ?, ?)");
+        $stmt = $pdo->prepare("INSERT INTO actualites (Titre, Description, image_url) VALUES (?, ?, ?)");
         $stmt->execute([$Titre, $Description, $image_url]);
 
         // Return a success response

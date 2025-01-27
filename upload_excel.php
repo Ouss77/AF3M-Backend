@@ -55,7 +55,7 @@ if (isset($_FILES['file'])) {
         $pdo->beginTransaction();
 
         // Check if author exists in the Authors table
-        $stmt = $pdo->prepare("SELECT author_id FROM Authors WHERE author_name = :author_name");
+        $stmt = $pdo->prepare("SELECT author_id FROM authors WHERE author_name = :author_name");
         $stmt->execute(['author_name' => $author_name]);
         $author = $stmt->fetch(PDO::FETCH_ASSOC);
 
@@ -64,13 +64,13 @@ if (isset($_FILES['file'])) {
             $author_id = $author['author_id'];
         } else {
             // Author doesn't exist, so insert the author into the Authors table
-            $stmt = $pdo->prepare("INSERT INTO Authors (author_name) VALUES (:author_name)");
+            $stmt = $pdo->prepare("INSERT INTO authors (author_name) VALUES (:author_name)");
             $stmt->execute(['author_name' => $author_name]);
             $author_id = $pdo->lastInsertId();  // Get the ID of the newly inserted author
         }
 
         // Insert the article data into the Articles table (without the author information)
-        $stmt = $pdo->prepare("INSERT INTO Articales (titre, annee, theme, resume) 
+        $stmt = $pdo->prepare("INSERT INTO articales (titre, annee, theme, resume) 
                                VALUES (:titre, :annee, :theme, :resume)");
         $stmt->execute([
             'titre' => $titre,
@@ -81,7 +81,7 @@ if (isset($_FILES['file'])) {
         $article_id = $pdo->lastInsertId();  // Get the ID of the newly inserted article
 
         // Link the article to the author in the Article_Authors table
-        $stmt = $pdo->prepare("INSERT INTO Article_Authors (article_id, author_id) 
+        $stmt = $pdo->prepare("INSERT INTO article_authors (article_id, author_id) 
                                VALUES (:article_id, :author_id)");
         $stmt->execute([
             'article_id' => $article_id,

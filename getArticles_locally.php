@@ -17,9 +17,9 @@ try {
             GROUP_CONCAT(au.author_name SEPARATOR ', ') AS authors,
             a.pdf_files
         FROM 
-            Articales a
+            articales a
         LEFT JOIN 
-            Article_Authors aa ON a.article_id = aa.article_id
+            article_authors aa ON a.article_id = aa.article_id
         LEFT JOIN 
             Authors au ON aa.author_id = au.author_id
         GROUP BY 

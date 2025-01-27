@@ -13,13 +13,13 @@ if (isset($_GET['article_id']) && is_numeric($_GET['article_id'])) {
         $pdo->beginTransaction();
 
         // Step 1: Delete related entries from Article_Authors (junction table)
-        $deleteAuthorsQuery = "DELETE FROM Article_Authors WHERE article_id = :article_id";
+        $deleteAuthorsQuery = "DELETE FROM article_authors WHERE article_id = :article_id";
         $stmt = $pdo->prepare($deleteAuthorsQuery);
         $stmt->bindParam(':article_id', $articleId, PDO::PARAM_INT);
         $stmt->execute();
 
         // Step 2: Delete the article from the Articles table
-        $deleteArticleQuery = "DELETE FROM Articales WHERE article_id = :article_id";
+        $deleteArticleQuery = "DELETE FROM articales WHERE article_id = :article_id";
         $stmt = $pdo->prepare($deleteArticleQuery);
         $stmt->bindParam(':article_id', $articleId, PDO::PARAM_INT);
         $stmt->execute();

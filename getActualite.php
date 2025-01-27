@@ -6,7 +6,7 @@ header('Content-Type: application/json');
 
 try {
 
-    $stmt = $pdo->query("SELECT * FROM Actualites");
+    $stmt = $pdo->query("SELECT * FROM actualites");
     $articles = $stmt->fetchAll(PDO::FETCH_ASSOC);
     
     echo json_encode($articles);
